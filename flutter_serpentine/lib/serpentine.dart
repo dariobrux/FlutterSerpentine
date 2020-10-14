@@ -4,13 +4,29 @@ import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:flutter_serpentine/direction.dart';
 
-class Serpentine extends CustomPainter {
+class Serpentine extends StatelessWidget{
   final Direction direction;
   final double arcRadius;
   final double strokeWidth;
   final List<Color> colors;
 
   Serpentine(this.direction, this.arcRadius, this.strokeWidth, this.colors);
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomPaint(
+      painter: SerpentinePainter(direction, arcRadius, strokeWidth, colors),
+    );
+  }
+}
+
+class SerpentinePainter extends CustomPainter {
+  final Direction direction;
+  final double arcRadius;
+  final double strokeWidth;
+  final List<Color> colors;
+
+  SerpentinePainter(this.direction, this.arcRadius, this.strokeWidth, this.colors);
 
   @override
   void paint(Canvas canvas, Size size) {

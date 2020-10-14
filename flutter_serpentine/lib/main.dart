@@ -66,17 +66,15 @@ class _MyHomePageState extends State<MyHomePage> {
           padding: EdgeInsets.all(0),
           width: double.infinity,
           height: double.infinity,
-          child: CustomPaint(
-            painter: Serpentine(
-              Direction.vertical,
-              50,
-              10,
-              [
-                Colors.red.shade50,
-                Colors.red,
-                Colors.red.shade50,
-              ],
-            ),
+          child: Serpentine(
+            Direction.vertical,
+            50,
+            10,
+            [
+              Colors.red.shade50,
+              Colors.red,
+              Colors.red.shade50,
+            ],
           ),
         ),
       ),
