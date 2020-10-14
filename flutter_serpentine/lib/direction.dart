@@ -1,4 +1,5 @@
 enum Direction {
   verticalLeft,
-  verticalRight
+  verticalRight,
+  vertical
 }

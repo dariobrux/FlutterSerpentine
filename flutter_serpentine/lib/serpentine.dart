@@ -36,13 +36,14 @@ class Serpentine extends CustomPainter {
       case Direction.verticalRight:
         path = _getVerticalRightPath(size, arcRadius);
         break;
+      case Direction.vertical:
+        path = _getVerticalPath(size);
+        break;
     }
 
     if (direction == Direction.verticalLeft) {}
 
     canvas.drawPath(path, paint);
-
-    canvas.drawPoints(ui.PointMode.points, [Offset(size.width / 2, size.height / 2)], paint);
   }
 
   Path _getVerticalLeftPath(ui.Size size, double arcRadius) {
@@ -89,6 +90,16 @@ class Serpentine extends CustomPainter {
 
     // Draw the line till the end in vertical
     path.lineTo(size.width, size.height);
+
+    return path;
+  }
+
+  Path _getVerticalPath(ui.Size size) {
+    var path = Path();
+    path.moveTo(size.width / 2, 0);
+
+    // Draw the line till the end in vertical
+    path.lineTo(size.width / 2, size.height);
 
     return path;
   }
