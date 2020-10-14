@@ -37,22 +37,20 @@ class SerpentinePainter extends CustomPainter {
 
     paint.style = PaintingStyle.stroke;
     paint.strokeWidth = this.strokeWidth;
-    paint.shader = LinearGradient(
-      begin: Alignment.topRight,
-      end: Alignment.bottomLeft,
-      colors: this.colors,
-    ).createShader(rect);
 
     var arcRadius = this.arcRadius;
 
     switch (direction) {
       case Direction.verticalLeft:
+        paint.shader = _getVerticalLeftShader(rect);
         path = _getVerticalLeftPath(size, arcRadius);
         break;
       case Direction.verticalRight:
+        paint.shader = _getVerticalRightShader(rect);
         path = _getVerticalRightPath(size, arcRadius);
         break;
       case Direction.vertical:
+        paint.shader = _getVerticalShader(rect);
         path = _getVerticalPath(size);
         break;
     }
@@ -60,6 +58,30 @@ class SerpentinePainter extends CustomPainter {
     if (direction == Direction.verticalLeft) {}
 
     canvas.drawPath(path, paint);
+  }
+
+  Shader _getVerticalLeftShader(Rect rect){
+    return LinearGradient(
+      begin: Alignment.topRight,
+      end: Alignment.bottomLeft,
+      colors: this.colors,
+    ).createShader(rect);
+  }
+
+  Shader _getVerticalRightShader(Rect rect){
+    return LinearGradient(
+      begin: Alignment.topLeft,
+      end: Alignment.bottomRight,
+      colors: this.colors,
+    ).createShader(rect);
+  }
+
+  Shader _getVerticalShader(Rect rect){
+    return LinearGradient(
+      begin: Alignment.topCenter,
+      end: Alignment.bottomCenter,
+      colors: this.colors,
+    ).createShader(rect);
   }
 
   Path _getVerticalLeftPath(ui.Size size, double arcRadius) {

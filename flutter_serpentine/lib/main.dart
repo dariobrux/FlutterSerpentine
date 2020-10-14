@@ -71,9 +71,9 @@ class _MyHomePageState extends State<MyHomePage> {
             50,
             10,
             [
-              Colors.red.shade50,
+              Colors.red.withOpacity(0.01),
               Colors.red,
-              Colors.red.shade50,
+              Colors.red.withOpacity(0.01),
             ],
           ),
         ),
