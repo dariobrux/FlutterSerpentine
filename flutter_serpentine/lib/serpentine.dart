@@ -123,7 +123,3 @@ class SerpentinePainter extends CustomPainter {
   @override
   bool shouldRepaint(CustomPainter oldDelegate) => true;
 }
-
-class AppColors {
-  static Color primaryColor = Colors.red;
-}
