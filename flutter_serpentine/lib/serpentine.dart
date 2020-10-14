@@ -3,7 +3,14 @@ import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
 
-class CustomWave extends CustomPainter {
+class Serpentine extends CustomPainter {
+
+  final double arcRadius;
+  final double strokeWidth;
+  final List<Color> colors;
+
+  Serpentine({this.arcRadius, this.strokeWidth, this.colors});
+
   @override
   void paint(Canvas canvas, Size size) {
     var path = Path();
@@ -12,18 +19,14 @@ class CustomWave extends CustomPainter {
     var rect = Offset.zero & size;
 
     paint.style = PaintingStyle.stroke;
-    paint.strokeWidth = 5;
+    paint.strokeWidth = this.strokeWidth;
     paint.shader = LinearGradient(
       begin: Alignment.topRight,
       end: Alignment.bottomLeft,
-      colors: [
-        Colors.red.shade50,
-        Colors.red,
-        Colors.red.shade50
-      ],
+      colors: this.colors,
     ).createShader(rect);
 
-    var arcRadius = 50.0;
+    var arcRadius = this.arcRadius;
 
     path.moveTo(size.width, 0);
 
